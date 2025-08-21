@@ -16,7 +16,6 @@ const { activeComment } = storeToRefs(store)
 const { comment, parentId } = defineProps(['comment', 'parentId', 'isReplying'])
 const starterScore = shallowRef(comment.score)
 
-const imgPath = `src/assets/${comment.user.image.webp}`
 const imgAlt = `${comment.user.username}'s avatar`
 const data = `${formatDistanceToNowStrict(new Date(comment.createdAt), { addSuffix: true })}`
 
@@ -79,7 +78,7 @@ onConfirm(() => deleteComment(parentId, comment.id))
 <template>
 	<article class="comment">
 		<div class="comment__user">
-			<img :src="imgPath" :alt="imgAlt" class="comment__img" />
+			<img :src="comment.user.image.webp" :alt="imgAlt" class="comment__img" />
 			<p class="comment__name">
 				{{ comment.user.username }}
 			</p>
