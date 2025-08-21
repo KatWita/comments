@@ -7,7 +7,6 @@ const { isReplying, comment, parentId } = defineProps(['isReplying', 'comment', 
 const emit = defineEmits(['hide'])
 const { currentUser, addComment, addReply } = useStore()
 
-const filePath = `src/assets/${currentUser.image.webp}`
 const imgAlt = `${currentUser.username}'s avatar`
 
 const content = ref('')
@@ -82,7 +81,7 @@ const handleSubmit = () => {
 			@keydown.enter.exact.prevent="handleSubmit"
 			@keydown.enter.shift.exact="text += '\n'"
 		/>
-		<img :src="filePath" :alt="imgAlt" class="add__img" />
+		<img :src="currentUser.image.webp" :alt="imgAlt" class="add__img" />
 		<div class="add__btns">
 			<button v-if="isReplying" type="submit" class="add__send-btn">Reply</button>
 			<button v-else type="submit" class="add__send-btn">Send</button>
